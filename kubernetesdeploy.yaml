@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bank-project-deploy
+  labels:
+    app: bank-project-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bank-project-app
+  template:
+    metadata:
+      labels:
+        app: bank-project-app
+    spec:
+      containers:
+      - name: bank-project-container
+        image: 95ashwini/bank-project-app
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bank-project-np-service
+  labels:
+    app: bank-project-app
+spec:
+  selector:
+    app: bank-project-app
+
+  type: NodePort
+  ports:
+  - nodePort: 31032    
+    port: 8081
+    targetPort: 8081

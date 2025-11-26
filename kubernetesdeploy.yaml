@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: insurance-project-container
-        image: image: 119694353779.dkr.ecr.us-east-1.amazonaws.com/insurance:latest
+        image: 119694353779.dkr.ecr.us-east-1.amazonaws.com/insurance:latest
 
         ports:
         - containerPort: 8081
